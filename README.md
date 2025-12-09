@@ -33,6 +33,39 @@ It provides:
 5. Approved test cases are saved locally.
 6. (Optional) You can export them automatically to Zephyr.
 
+
+### Using the application
+
+Create a new virtual environment and activate the virtual environement:
+
+Windows or Powershell: 
+
+```bash
+ python -m venv env_name
+```
+
+Linux or Mac: 
+```bash
+ python3 -m venv env_name
+```
+
+Activating the environement on Windows(cmd): 
+
+```bash
+ env_name\Scripts\activate
+```
+
+Activating the environement on Linux/Mac: 
+```bash
+ source env_name/bin/activate
+```
+
+Install the dependencies from `requirements.txt` file: 
+
+```bash
+ pip install -r requirements.txt
+```
+
 ### 📝 Example Output
 
 ```bash
