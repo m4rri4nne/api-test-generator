@@ -25,32 +25,25 @@ def parse_swagger(swagger_data):
     if not swagger_data:
         print("❌ None swagger data provided.")
         return
-
     paths = swagger_data.get("paths", {})
     if not paths:
         print("⚠️ None path was found in the swagger file.")
         return
-
-    for path, methods in paths.items():
-        print(f"\nPath: {path}")
-        for method, details in methods.items():
-            print(f"  Method: {method.upper()}")
-            parameters = details.get("parameters", [])
-            if not parameters:
-                print("    None parameter defined.")
-            else:
-                for param in parameters:
-                    print(f"    Parameter: {param.get('name')} - In: {param.get('in')} - Required: {param.get('required')}")
-
-
+    return paths
 
 def read_and_parse_swagger(file_location, swaggerType = "file"):
     if swaggerType == "file":
-        swagger_data = read_swagger_file(file_location)
+        return read_swagger_file(file_location)
     elif swaggerType == "link":
-        swagger_data = read_swagger_linked_file(file_location)
+        return read_swagger_linked_file(file_location)
     else:
         print("❌ Invalid swagger type specified.")
         return
 
-    parse_swagger(swagger_data)
+
+def get_path_info(path, swagger_data):
+    for swagger_path, methods in swagger_data.get("paths", {}).items():
+        if swagger_path == path:
+            return methods
+    print(f"❌ Path '{path}' not found in the swagger data.")
+    return None
