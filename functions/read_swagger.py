@@ -31,14 +31,14 @@ def parse_swagger(swagger_data):
         return
     return paths
 
-def read_and_parse_swagger(file_location, swaggerType = "file"):
-    if swaggerType == "file":
+def read_and_parse_swagger(file_location, swagger_type = "file"):
+    if swagger_type == "file":
         return read_swagger_file(file_location)
-    elif swaggerType == "link":
+    elif swagger_type == "link":
         return read_swagger_linked_file(file_location)
     else:
         print("❌ Invalid swagger type specified.")
-        return
+        return None
 
 
 def get_path_info(path, swagger_data):

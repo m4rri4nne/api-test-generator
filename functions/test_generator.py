@@ -2,9 +2,26 @@
 
 def test_generator(path, method, swagger_data):
     print(f"Generating tests for {method.upper()} {path}...")
-
     details = swagger_data["paths"][path][method]
-    print(details['responses'])
+
+    # Getting the name of the endpoint
+    if 'tags' not in details:
+        endpoint_name = path
+    elif len(details['tags']) == 0:
+        endpoint_name = path
+    else:
+        endpoint_name = details['tags'][0]
+    if 'requestBody' in details:
+        request_body = details['requestBody']
+    if 'parameters' in details:
+        parameters = details['parameters']
+
+
+    print(f'Retrive {endpoint_name} with ')
+
+
+    for response in details['responses']:
+        print(response)
     
 
 
