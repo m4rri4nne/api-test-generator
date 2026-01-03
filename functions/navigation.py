@@ -29,15 +29,6 @@ def clear_screen():
 # --------------------------
 # INTERFACE
 # --------------------------
-
-def main_menu():
-    print()
-    type_effect(theme.OPTION_PROMPT, 0.03, theme.PASTEL_PINK)
-    print(theme.PASTEL_BLUE   + theme.OPTION_1)
-    print(theme.PASTEL_YELLOW + theme.OPTION_2)
-    print(theme.PASTEL_GREEN  + theme.OPTION_3)
-    print(theme.PASTEL_PINK   + theme.OPTION_4)
-    print(theme.PASTEL_YELLOW + theme.OPTION_5)
   
 
 def option_selector(option):
@@ -61,7 +52,9 @@ def app_text_box():
     title_box(theme.MENU_TITLE, theme.PASTEL_PINK)
     type_effect(theme.WELCOME_MESSAGE, 0.04, theme.PASTEL_BLUE)
     while True:
-        main_menu()
+        type_effect(theme.OPTION_PROMPT, 0.03, theme.PASTEL_PINK)
+        for key, option in theme.LIST_OF_OPTIONS.items():
+            print(theme.PASTEL_BLUE + f"{key}. {option}")
         option = input(theme.PASTEL_PINK + "\n→ ")
         if option == "5":
             clear_screen()

@@ -18,11 +18,6 @@ UNDERLINE = '\033[4m'
 WELCOME_MESSAGE = "Welcome to API Test Generator✨"
 MENU_TITLE = ("🌸 API Test Generator - by: Alicia de Paula 🌸") 
 OPTION_PROMPT = "Chose your option:\n"
-OPTION_1 = "1) Understanding the application 🎀\n"
-OPTION_2 = "2) Generate tests using a swagger file - JSON format 🍃\n"
-OPTION_3 = "3) Genrate tests using a swagger link - URL format 🌈\n"
-OPTION_4 = "4) Generate tests using manual specification ✨\n" 
-OPTION_5 = "5) Exit ❌\n"
 OPTION_6 = "Returning to the main menu..."
 GOODBYE_MESSAGE = "Thank you for using the API Test Generator! See you later!"
 ERROR_MESSAGE = "❌ An error occurred. Please try again."
@@ -39,3 +34,12 @@ HELP_MESSAGE = (
 SWAGGER_FILE_PATH_ORIENTATION = "You chose to generate tests using a file, please provide the path to your Swagger JSON file: "
 SWAGGER_LINK_ORIENTATION = "You chose to generate tests using an url, please provide a valid URL to the Swagger JSON file: "
 MANUAL_SPECIFICATION_ORIENTATION = "You chose to generate tests using manual specification, please provide the necessary details as prompted: "
+
+
+LIST_OF_OPTIONS={
+    "1": "Understanding the application 🎀",
+    "2": "Generate tests using a swagger file - JSON format",
+    "3": "Generate tests using a swagger link - URL format",
+    "4": "Generate tests using manual specification",
+    "5": "Exit ❌"
+}
