@@ -1,6 +1,7 @@
 from google import genai
 from dotenv import load_dotenv
 import os
+from assets import theme
 
 
 def test_generator(path, method, swagger_data):
@@ -19,12 +20,11 @@ def test_generator(path, method, swagger_data):
         request_body = details['requestBody']
     if 'parameters' in details:
         parameters = details['parameters']
-    template = "GET /users/{id} ✔ Scenario: Retrieve a user with a valid ID   ✔ Scenario: Validate 404 for user not found  ✘ Scenario: Missing ID parameter  ✘ Scenario: Invalid format for ID "
     prompt = (f"Generate positive and negative tests for this endpoint:{path} for the method {method.upper()}"
               f"considering the following specifications: "
               f"Name of the endpoint: {endpoint_name}"
               f"Request body: {request_body}"
-              f"Query Parameters: {parameters} and return the tests following this template: {template}")
+              f"Query Parameters: {parameters} and return the tests following this template: {theme.PROMPT_TEMPLATE}")
     test_scenario = ai_connection(prompt)
     print(f"Exporting tests to file...")
     export_to_file(test_scenario, method, endpoint_name)
@@ -48,3 +48,21 @@ def export_to_file(test_scenario,method,endpoint_name):
         file.write(test_scenario)
 
     print(f"Test scenario exported to file: {file_path}")
+
+
+
+def manual_specification():
+    name= input(f"Please specify the endpoint name -> ")
+    path= input(f"Please specify the endpoint path -> ")
+    method= input(f"Please specify the endpoint method -> ")
+    query_params= input(f"Please specify the query parameters -> ")
+    request_body= input(f"Please specify the request body -> ")
+    authorization= input(f"Please specify the authorization -> ")
+    prompt = (f"Generate positive and negative tests for this endpoint:{path} for the method {method.upper()}"
+              f"considering the following specifications: "
+              f"Request body: {request_body}"
+              f"Query Parameters: {query_params}, authorization:{authorization} and return the tests following this template: {theme.PROMPT_TEMPLATE}")
+
+    test_scenario = ai_connection(prompt)
+    print(f"Exporting tests to file...")
+    export_to_file(test_scenario, method, name)

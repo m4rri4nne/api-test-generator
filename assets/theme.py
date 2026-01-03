@@ -43,3 +43,9 @@ LIST_OF_OPTIONS={
     "4": "Generate tests using manual specification",
     "5": "Exit ❌"
 }
+
+PROMPT_TEMPLATE = ("GET /users/{id} "
+                   "✔ Scenario: Retrieve a user with a valid ID   "
+                   "✔ Scenario: Validate 404 for user not found  "
+                   "✘ Scenario: Missing ID parameter  "
+                   "✘ Scenario: Invalid format for ID ")

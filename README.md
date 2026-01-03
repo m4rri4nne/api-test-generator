@@ -8,9 +8,7 @@ The API Test Generator automates the process of discovering, parsing, and transf
 It provides:
 -  Automatic extraction of endpoints, parameters, and responses
 -  Auto-generated positive and negative test cases using IA
--  Human approval flows for each scenario
--  Export of approved tests to a local file
--  Optional integration with Zephyr to create test items directly
+-  Export of tests to a local file
 -  Perfect for QA engineers, SDETs, and API testing workflows
 
 ## 🔧 Technologies
@@ -30,9 +28,7 @@ It provides:
     - Negative/error cases
     - Missing/invalid parameter cases
     - Status-code-based cases
-4. You review and approve each scenario.
-5. Approved test cases are saved locally.
-6. (Optional) You can export them automatically to Zephyr.
+5. Test cases are saved locally.
 
 
 ### Using the application

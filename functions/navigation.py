@@ -71,15 +71,16 @@ def swagger_load_message(orientation_type = "file"):
         file_path = input(theme.SWAGGER_FILE_PATH_ORIENTATION)
         type_effect("Loading swagger file and parsing the file... Please wait a moment. ⏳", 0.035, theme.PASTEL_YELLOW)
         swagger_data = read_swagger.read_and_parse_swagger(file_path, "file")
+        path_selector(swagger_data)
     elif orientation_type == "link":
         file_path = input(theme.SWAGGER_LINK_ORIENTATION)
         type_effect("Loading swagger file and parsing the file... Please wait a moment. ⏳", 0.035, theme.PASTEL_YELLOW)
         swagger_data = read_swagger.read_and_parse_swagger(file_path, "link")
+        path_selector(swagger_data)
     elif orientation_type == "manual":
         type_effect(theme.MANUAL_SPECIFICATION_ORIENTATION, 0.035, theme.PASTEL_BLUE)
-        swagger_data = {}
-    path_selector(swagger_data)
-
+        test_generator.manual_specification()
+    type_effect(theme.OPTION_6, 0.04, theme.PASTEL_GREEN)
 
 
 def path_selector(swagger_data):

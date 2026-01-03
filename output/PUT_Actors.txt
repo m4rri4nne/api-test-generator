@@ -1,0 +1,9 @@
+```
+PUT v1/actors/{id}
+✔ Scenario: Successfully update an actor with valid data (e.g., existing ID `123`, body `{name:"Updated Actor", age:25}`)
+✘ Scenario: Actor not found (valid ID format, non-existent actor, e.g., ID `9999`)
+✘ Scenario: Invalid format for ID (e.g., ID `abc` instead of a numeric value)
+✘ Scenario: Missing 'name' field in the request body (e.g., body `{age:10}`)
+✘ Scenario: Invalid type for 'age' field in the request body (e.g., body `{name:"Actor", age:"twenty"}`)
+✘ Scenario: Empty request body (e.g., body `{}`)
+```
