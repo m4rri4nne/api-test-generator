@@ -1,0 +1,15 @@
+`GET /api/v1/Books`
+
+✔ Scenario: Retrieve all books with default pagination
+✔ Scenario: Retrieve books for a specific page and limit (e.g., `?page=2&limit=10`)
+✔ Scenario: Retrieve books filtered by an existing author (e.g., `?author=Jane Doe`)
+✔ Scenario: Retrieve books filtered by a partial title match (e.g., `?title_contains=Adventure`)
+✔ Scenario: Retrieve books with a combination of valid query parameters (e.g., `?author=John Smith&page=1&limit=5`)
+✔ Scenario: Retrieve books with the maximum allowed limit (e.g., `?limit=100`)
+
+✘ Scenario: Invalid format for `page` query parameter (e.g., `?page=abc`)
+✘ Scenario: Invalid format for `limit` query parameter (e.g., `?limit=invalid_number`)
+✘ Scenario: `limit` query parameter exceeds the maximum allowed value (e.g., `?limit=101`)
+✘ Scenario: Filter by a non-existent author (e.g., `?author=NonExistentAuthor`) - *Expected: 200 OK with an empty array*
+✘ Scenario: Filter by a `title_contains` value that yields no results (e.g., `?title_contains=UnlikelyTitle`) - *Expected: 200 OK with an empty array*
+✘ Scenario: Unsupported query parameter is provided (e.g., `?sort_by=invalid_field`) - *Expected: 400 Bad Request or parameter ignored*

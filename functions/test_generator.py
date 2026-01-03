@@ -8,7 +8,7 @@ def test_generator(path, method, swagger_data):
     details = swagger_data["paths"][path][method]
     request_body = ""
     parameters = ""
-    # Getting the name of the endpoint
+    # Getting information about the endpoint
     if 'tags' not in details:
         endpoint_name = path
     elif len(details['tags']) == 0:
@@ -25,7 +25,9 @@ def test_generator(path, method, swagger_data):
               f"Name of the endpoint: {endpoint_name}"
               f"Request body: {request_body}"
               f"Query Parameters: {parameters} and return the tests following this template: {template}")
-    ai_connection(prompt)
+    test_scenario = ai_connection(prompt)
+    print(f"Exporting tests to file...")
+    export_to_file(test_scenario, method, endpoint_name)
 
 def ai_connection(prompt):
     load_dotenv()
@@ -36,4 +38,13 @@ def ai_connection(prompt):
         model="gemini-2.5-flash",
         contents=prompt
     )
-    print(response.text)
+    return response.text
+
+
+def export_to_file(test_scenario,method,endpoint_name):
+    os.makedirs("output", exist_ok=True)
+    file_path = f"output/{method}_{endpoint_name}.txt"
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(test_scenario)
+
+    print(f"Test scenario exported to file: {file_path}")

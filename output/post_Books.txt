@@ -1,0 +1,17 @@
+```
+POST /api/v1/Books
+✔ Scenario: Successfully create a new book with all valid fields
+✔ Scenario: Successfully create a new book with only mandatory fields
+✔ Scenario: Successfully create a new book using 'text/json; v=1.0' content type
+
+✘ Scenario: Fail to create book due to missing 'title' field
+✘ Scenario: Fail to create book due to missing 'author' field
+✘ Scenario: Fail to create book due to missing 'isbn' field
+✘ Scenario: Fail to create book with an 'isbn' that already exists (conflict)
+✘ Scenario: Fail to create book due to invalid 'isbn' format (e.g., too short, non-numeric where expected)
+✘ Scenario: Fail to create book due to 'publication_year' being a string instead of an integer
+✘ Scenario: Fail to create book due to empty request body
+✘ Scenario: Fail to create book due to malformed JSON in request body
+✘ Scenario: Fail to create book with an empty 'title' string
+✘ Scenario: Fail to create book with an empty 'author' string
+```

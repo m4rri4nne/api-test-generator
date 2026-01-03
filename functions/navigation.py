@@ -90,24 +90,33 @@ def path_selector(swagger_data):
     selected_path = input(theme.PASTEL_PINK + " → ")
     if selected_path.strip() == "":
         type_effect("You chose to generate tests for all paths and methods.", 0.035, theme.PASTEL_GREEN)
+        generate_tests_all_methods_endpoints(swagger_data["paths"], swagger_data)
     else:
         methods_available = read_swagger.get_path_info(selected_path, swagger_data)
         for methods in methods_available:
-            print()
             print(f"\nMethods available : {methods.upper()}")
-        selected_method = method_selector(methods_available) # Select the method available 
-        test_generator.test_generator(selected_path, selected_method.lower(), swagger_data) # Generate the tests based on the specifications
+        selected_method = method_selector(methods_available) # Select the method available
+        for method in selected_method:
+            test_generator.test_generator(selected_path, method.lower(), swagger_data)
 
 def method_selector(methods_available):
     type_effect("Type the method of the endpoint that you want to generate the tests (default: all methods) ", 0.035, theme.PASTEL_PINK)
     selected_method = input(theme.PASTEL_PINK + " → ")
     if selected_method.strip() == "":
         type_effect("You chose to generate tests for all methods.", 0.035, theme.PASTEL_GREEN)
-        return selected_method
+        return methods_available
     else:
         if selected_method.lower() in methods_available:
             type_effect(f"You chose to generate tests for the method: {selected_method.upper()}.", 0.035, theme.PASTEL_GREEN)
             return selected_method
         else:
             type_effect(f"❌ The method '{selected_method.upper()}' is not available for the selected path.", 0.035, theme.PASTEL_RED)
-            return
+            return None
+
+
+
+def generate_tests_all_methods_endpoints(available_path, swagger_data):
+    for path in available_path:
+        methods_available = read_swagger.get_path_info(path, swagger_data)
+        for method in methods_available:
+            test_generator.test_generator(path, method.lower(), swagger_data)
