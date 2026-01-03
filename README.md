@@ -1,7 +1,7 @@
 # 🚀 API Test Generator
 
 A powerful tool designed to help QAs and engineering teams automatically generate API test scenarios directly from a Swagger/OpenAPI specification.
-Reduce manual work, improve test coverage, and optionally push approved test cases to Zephyr.
+Reduce manual work, improve test coverage.
 
 ## 📘 Description
 The API Test Generator automates the process of discovering, parsing, and transforming Swagger definitions into actionable test scenarios.
@@ -15,7 +15,6 @@ It provides:
 
 - Python 3.x
 - Swagger/OpenAPI parsing
-- Optional Zephyr API integration
 - Rich CLI support (e.g., typer, rich)
 - JSON/YAML processing
 - Gemini AI integration
