@@ -97,8 +97,12 @@ def path_selector(swagger_data):
         for methods in methods_available:
             print(f"\nMethods available : {methods.upper()}")
         selected_method = method_selector(methods_available) # Select the method available
-        for method in selected_method:
-            test_generator.test_generator(selected_path, method.lower(), swagger_data)
+        print(type(selected_method))
+        if type(selected_method) == list:
+            for method in selected_method:
+                test_generator.test_generator(selected_path, method.lower(), swagger_data)
+        else:
+            test_generator.test_generator(selected_path, selected_method.lower(), swagger_data)
 
 def method_selector(methods_available):
     type_effect("Type the method of the endpoint that you want to generate the tests (default: all methods) ", 0.035, theme.PASTEL_PINK)
