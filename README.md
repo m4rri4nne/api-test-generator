@@ -7,8 +7,8 @@ Reduce manual work, improve test coverage, and optionally push approved test cas
 The API Test Generator automates the process of discovering, parsing, and transforming Swagger definitions into actionable test scenarios.
 It provides:
 -  Automatic extraction of endpoints, parameters, and responses
--  Auto-generated positive and negative test cases
--  Human approval flow for each scenario
+-  Auto-generated positive and negative test cases using IA
+-  Human approval flows for each scenario
 -  Export of approved tests to a local file
 -  Optional integration with Zephyr to create test items directly
 -  Perfect for QA engineers, SDETs, and API testing workflows
@@ -20,6 +20,7 @@ It provides:
 - Optional Zephyr API integration
 - Rich CLI support (e.g., typer, rich)
 - JSON/YAML processing
+- Gemini AI integration
 
 ## 📂 How It Works
 1. You provide a Swagger URL or local file.
@@ -28,7 +29,7 @@ It provides:
     - Positive cases
     - Negative/error cases
     - Missing/invalid parameter cases
-    - Status code–based cases
+    - Status-code-based cases
 4. You review and approve each scenario.
 5. Approved test cases are saved locally.
 6. (Optional) You can export them automatically to Zephyr.
@@ -38,7 +39,7 @@ It provides:
 
 Create a new virtual environment and activate the virtual environement:
 
-Windows or Powershell: 
+Windows or PowerShell: 
 
 ```bash
  python -m venv env_name
@@ -49,13 +50,13 @@ Linux or Mac:
  python3 -m venv env_name
 ```
 
-Activating the environement on Windows(cmd): 
+Activating the environment on Windows(cmd): 
 
 ```bash
  env_name\Scripts\activate
 ```
 
-Activating the environement on Linux/Mac: 
+Activating the environment on Linux/Mac: 
 ```bash
  source env_name/bin/activate
 ```
@@ -64,6 +65,11 @@ Install the dependencies from `requirements.txt` file:
 
 ```bash
  pip install -r requirements.txt
+```
+
+Create a `.env` file in the root directory of the project and add the following environment variables:
+```bash
+GOOGLE_API_KEY=YOUR_GOOGLE_API_KEY
 ```
 
 ### 📝 Example Output
